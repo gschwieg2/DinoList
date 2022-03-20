@@ -14,6 +14,7 @@ struct ToDoListView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            
             VStack {
                 Text("Dino-List")
                     .font(.largeTitle)
@@ -40,9 +41,10 @@ struct ToDoListView: View {
                                     listStore.deleteListElement(toDeleteElement: currentElement)
                                 }
                         }
+                        
+                        .listStyle(.insetGrouped)
                     }
-                }
-                .listStyle(.insetGrouped)
+                } .frame(width: geometry.size.width * 0.70)
                 
                 Form {
                     TextField("Enter new item name here", text: $newListElement)
@@ -68,11 +70,16 @@ struct ToDoListView: View {
                 
                 .foregroundColor(.green)
             }
-            .background(Image(randomDino)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill))
+            
         }
+        .background(Image(randomDino)
+                        .resizable()
+                        .clipped()
+                        .aspectRatio(contentMode: .fill)
+                        .ignoresSafeArea())
     }
+        
+    
 }
 
 struct ToDoListView_Previews: PreviewProvider {

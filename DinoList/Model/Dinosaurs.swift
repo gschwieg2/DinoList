@@ -8,6 +8,6 @@
 import Foundation
 
 func getRandomDinosaur() -> String {
-    let randomInt = Int.random(in: 1..<7)
+    let randomInt = Int.random(in: 1..<10)
     return "dinoImage\(randomInt)"
 }
